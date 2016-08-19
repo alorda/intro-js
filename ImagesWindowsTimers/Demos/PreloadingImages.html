@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Preloading Images</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+var imagePaths = [];
+imagePaths[0] = "Images/Hulk.jpg";
+imagePaths[1] = "Images/Batman.jpg";
+
+var imageCache = [];
+
+for (var i=0; i<imagePaths.length; i++) {
+	imageCache[i] = new Image();
+	imageCache[i].src = imagePaths[i];
+}
+
+function imageRollover(img, imgSrc) {
+	img.src = imgSrc;
+}
+</script>
+</head>
+<body>
+<div style="text-align:center;">
+<h1>Simple Image Rollover Function</h1>
+<img name="Banner" src="Images/Banner.jpg"
+	onmouseover="imageRollover(this, 'Images/Hulk.jpg');"
+	onmouseout="imageRollover(this, 'Images/Banner.jpg');">
+<img name="Bruce" src="Images/Bruce.jpg"
+	onmouseover="imageRollover(this, 'Images/Batman.jpg');"
+	onmouseout="imageRollover(this, 'Images/Bruce.jpg');">
+<p>Who are you calling simple?</p>
+</div>
+</body>
+</html>

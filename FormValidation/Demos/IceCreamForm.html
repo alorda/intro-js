@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Textareas</title>
+<script type="text/javascript">
+function validate(form){
+	var errors = [];
+
+	if ( !checkRadioArray(form.container) ) {
+		errors[errors.length] = "You must choose a cup or cone.";
+	}
+
+	if ( !checkCheckBox(form.terms) ) {
+		errors[errors.length] = "You must agree to the terms.";
+	}
+
+	if ( !checkSelect(form.flavor) ) {
+		errors[errors.length] = "You must choose a flavor.";
+	}
+
+	if (errors.length > 0) {
+		reportErrors(errors);
+		return false;
+	}
+
+	return true;
+}
+
+function checkRadioArray(radioButtons){
+	for (var i=0; i < radioButtons.length; i++) {
+		if (radioButtons[i].checked) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function checkCheckBox(cb){
+	return cb.checked;
+}
+
+function checkSelect(select){
+	return (select.selectedIndex > 0);
+}
+
+function checkLength(text, min, max){
+	min = min || 1;
+	max = max || 10000;
+	if (text.length < min || text.length > max) {
+		return false;
+	}
+	return true;
+}
+
+function checkTextArea(textArea, max){
+	var numChars, chopped, message;
+	if (!checkLength(textArea.value, 0, max)) {
+		numChars = textArea.value.length;
+		chopped = textArea.value.substr(0, max);
+		message = 'You typed ' + numChars + ' characters.\n';
+		message += 'The limit is ' + max + '.';
+		message += 'Your entry will be shortened to:\n\n' + chopped;
+		alert(message);
+		textArea.value = chopped;
+	}
+}
+
+function reportErrors(errors){
+	var msg = "There were some problems...\n";
+	var numError;
+	for (var i = 0; i<errors.length; i++) {
+		numError = i + 1;
+		msg += "\n" + numError + ". " + errors[i];
+	}
+	alert(msg);
+}
+</script>
+</head>
+<body>
+<h1>Ice Cream Form</h1>
+<form method="post" action="Process.html" onsubmit="return validate(this);">
+	<p><strong>Cup or Cone?</strong>
+		<input type="radio" name="container" value="cup"> Cup
+		<input type="radio" name="container" value="plaincone"> Plain cone
+		<input type="radio" name="container" value="sugarcone"> Sugar cone
+		<input type="radio" name="container" value="wafflecone"> Waffle cone
+	</p>
+	<p>
+	<strong>Flavor:</strong>
+		<select name="flavor">
+			<option value="0" selected></option>
+			<option value="choc">Chocolate</option>
+			<option value="straw">Strawberry</option>
+			<option value="van">Vanilla</option>
+		</select>
+	</p>
+	<p>
+	<strong>Special Requests:</strong><br>
+	<textarea name="requests" cols="40" rows="6" wrap="virtual"
+		onblur="checkTextArea(this, 100);"></textarea>
+	</p>
+	<p>
+	<input type="checkbox" name="terms">
+	I understand that I'm really not going to get any ice cream.
+	</p>
+	<input type="submit" value="Place Order">
+</form>
+
+</body>
+</html>

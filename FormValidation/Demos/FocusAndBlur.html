@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Focus and Blur</title>
+<script src="DateUDFs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function getMonth(){
+		var elemMonthNumber = document.DateForm.MonthNumber;
+		var monthNumber = elemMonthNumber.value;
+		
+		var elemMonthName = document.DateForm.MonthName;
+		var month = monthAsString(elemMonthNumber.value);
+		
+		elemMonthName.value = (monthNumber > 0 && monthNumber <=12) ? month : "Bad Number";
+	}
+</script>
+</head>
+<body onload="document.DateForm.MonthNumber.focus();">
+<h1>Month Check</h1>
+<form name="DateForm">
+	Month Number: 
+	<input type="text" name="MonthNumber" size="2" onblur="getMonth();">
+	Month Name:
+	<input type="text" name="MonthName" size="10" onfocus="this.blur();">
+</form>
+</body>
+</html>

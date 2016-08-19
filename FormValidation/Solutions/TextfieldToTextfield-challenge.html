@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Textfield to Textfield</title>
+<script src="DateUDFs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function getMonth(){
+		var elemMonthNumber = document.DateForm.MonthNumber;
+		var elemMonthName = document.DateForm.MonthName;
+		var monthNum = parseInt(elemMonthNumber.value);
+		
+		var month = (monthNum >= 1 && monthNum <= 12) ? monthAsString(monthNum) : "Bad Number";
+				
+		elemMonthName.value = month;
+	}
+</script>
+</head>
+<body>
+<h1>Month Check</h1>
+<form name="DateForm">
+	Month Number: <input type="text" name="MonthNumber" size="2">
+	<input type="button" value="Get Month" onclick="getMonth();"><br>
+	Month Name: <input type="text" name="MonthName" size="10">
+</form>
+</body>
+</html>

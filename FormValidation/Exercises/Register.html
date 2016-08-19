@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration Form</title>
+<script type="text/javascript">
+/*
+	Create the validate() function here.
+*/
+
+function reportErrors(errors){
+	var msg = "There were some problems...\n";
+	var numError;
+	for (var i = 0; i<errors.length; i++) {
+		numError = i + 1;
+		msg += "\n" + numError + ". " + errors[i];
+	}
+	alert(msg);
+}
+
+</script>
+</head>
+<body>
+<h1>Registration Form</h1>
+<form method="post" action="Process.html"
+			onsubmit="return validate(this);">
+	<table border="0" cellspacing="2" cellpadding="2">
+      <tr>
+        <td>First Name:</td>
+        <td><input type="text" name="FirstName" size="20"></td>
+      </tr>
+      <tr>
+        <td>Middle Initial:</td>
+        <td><input type="text" name="MidInit" size="2"></td>
+      </tr>
+      <tr>
+        <td> Last Name:</td>
+        <td><input type="text" name="LastName" size="20"></td>
+      </tr>
+      <tr>
+        <td>City: </td>
+        <td><input type="text" name="City" size="20"></td>
+      </tr>
+      <tr>
+        <td>State: </td>
+        <td><input type="text" name="State" size="2"></td>
+      </tr>
+      <tr>
+        <td>Country:</td>
+        <td><input type="text" name="Country" size="20"></td>
+      </tr>
+      <tr>
+        <td>Zip: </td>
+        <td><input type="text" name="Zip" size="10"></td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td><input type="text" name="Email" size="30"></td>
+      </tr>
+      <tr>
+        <td>Username:</td>
+        <td><input type="text" name="Username" size="10"></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="Password1" size="10"></td>
+      </tr>
+      <tr>
+        <td>Repeat Password: </td>
+        <td><input type="password" name="Password2" size="10"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+			<input name="submit" type="submit" value="Submit">
+			<input name="reset" type="reset" value="Reset Form">
+		</td>
+      </tr>
+    </table>
+</form>
+</body>
+</html>

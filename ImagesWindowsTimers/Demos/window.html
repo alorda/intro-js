@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>New Window</title>
+<script type="text/javascript">
+var eula;
+
+function openWin() {
+	eula = window.open("eula.html","eula","height=200,width=300,left=100,top=100");
+	eula.focus();
+}
+
+function eulaChecked() {
+	if (document.getElementById("confirmEula").checked && typeof eula == "undefined") {
+		alert("Come on now.  Don't you think you should read the EULA first?");
+		document.getElementById("confirmEula").checked = false;
+		openWin();
+	} else if (document.getElementById("confirmEula").checked && !eula.closed) {
+		eula.close();
+	} else if (!document.getElementById("confirmEula").checked) {
+		openWin();	
+	}
+}
+</script>
+</head>
+<body>
+<form action="process.xyz">
+<input type="checkbox" id="confirmEula" name="confirmEula" onclick="eulaChecked()"> Check to confirm that you agree with our <a href="eula.html" onclick="openWin(); return false;">user agreement</a>.
+</form>
+</body>
+</html>

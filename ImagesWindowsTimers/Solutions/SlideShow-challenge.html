@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Slide Show</title>
+<script type="text/javascript">
+
+var imagePaths = [];
+imagePaths[0] = "Images/Banner.jpg";
+imagePaths[1] = "Images/Hulk.jpg";
+imagePaths[2] = "Images/Bruce.jpg";
+imagePaths[3] = "Images/Batman.jpg";
+
+var imageCache = [];
+
+
+//loop the imagePaths array
+for (var i=0; i<imagePaths.length; i++) {
+	//s refers to the source of the current image path in the iteration
+	var s = imagePaths[i]
+	//create the new image object and put it in the imageCache array
+	imageCache[i] = new Image();
+	//here we set the source of the new image we just created
+	imageCache[i].src = s;
+	
+	/**
+	here we set the name of the image.  We do this by getting the substring of "s" ("s" is the image source, which can be something like "Images/Banner.jpg").  
+	
+	Now, the substring() function extracts a portion of the string and it takes 2 params: "from" which refers to the index position where to start the extraction and "to", which is optional and refers to the index where to stop the extraction. 
+	
+	Notice that the extraction then starts in the lastIndexOf "/" + 1 in the string "s". So, if s = "Images/Banner.jpg", then the extraction starts at 1, which, in this case, is letter "B".  Then the extraction stops when it finds the last index of a period (".") which means it would stop right before jpg.  
+	
+	This leaves us with just the raw name, "Banner".
+	**/
+	imageCache[i].name = s.substring(s.lastIndexOf("/")+1, s.lastIndexOf("."));
+	
+}
+
+var curSlide = 0;
+function changeSlide(dir){
+	curSlide += dir;
+	if (curSlide < 0) {
+		curSlide = imageCache.length - 1;
+	} else if (curSlide >= imageCache.length) {
+		curSlide = 0;
+	}
+	document.Slide.src = imagePaths[curSlide];
+	document.forms[0].imageSelector.selectedIndex=curSlide;
+}
+
+function goToSlide(slide){
+	document.Slide.src = imagePaths[slide];
+	curSlide = slide;
+}
+</script>
+</head>
+<body>
+<div style="text-align:center;">
+<h1>Slide Show</h1>
+<img name="Slide" src="Images/Banner.jpg">
+<form>
+<input type="button" onclick="changeSlide(-1);" value="Previous">
+<input type="button" onclick="changeSlide(1);" value="Next"><br>
+<select name="imageSelector" onchange="goToSlide(this.selectedIndex);">
+<script type="text/javascript">
+for (var i=0; i<imageCache.length; i++) {
+	document.write("<option value='" + i + "'>"
+					 + imageCache[i].name + "</option>");
+}
+</script>
+</select>
+</form>
+</div>
+</body>
+</html>

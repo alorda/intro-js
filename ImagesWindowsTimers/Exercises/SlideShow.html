@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Slide Show</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+//Preload Banner.jpg, Hulk.jpg, Bruce.jpg and Batman.jpg. 
+
+var curSlide = 0;
+/*
+	Create the function below. 
+		-If the user is viewing the last slide and clicks 
+		the Next button, the first slide should appear.
+		-If the user is viewing the first slide and clicks 
+		the Previous button, the last slide should appear.
+*/
+
+/*
+	Function Name: changeSlide
+	Arguments: dir
+	Returns: nothing
+	Action: Moves to next or previous slide, depending
+			on value of dir.
+			
+			The slide number is stored in curSlide.
+*/
+
+</script>
+</head>
+<body>
+<div style="text-align:center;">
+<h1>Slide Show</h1>
+<img name="Slide" src="Images/Banner.jpg">
+<form>
+<input type="button" onclick="changeSlide(-1);" value="Previous">
+<input type="button" onclick="changeSlide(1);" value="Next">
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Timer</title>
+<script type="text/javascript">
+	var timer;
+	function changeBg(color) {
+		timer = setTimeout(function() { document.bgColor=color; }, 1000);	
+	}
+	
+	function stopTimer() {
+		clearTimeout(timer);	
+	}
+</script>
+</head>
+<body>
+<button onclick="changeBg('red')">Change Background to Red</button>
+<button onclick="changeBg('white')">Change Background to White</button>
+<button onclick="stopTimer()">Wait! Don't do it!</button>
+</body>
+</html>
