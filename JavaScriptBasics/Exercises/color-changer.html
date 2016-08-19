@@ -10,7 +10,7 @@
 </head>
 <body
 			onload="window.alert('The page has loaded.')";
-			onkeypress="document.body.style.backgroundColor = 'white'; alert('Background color white.')";
+			onkeypress="document.body.style.backgroundColor = 'tomato'; alert('Background color tomato.')";
 >
 <form>
 	<p>Click the button to turn the page:
@@ -27,6 +27,10 @@
 		onmouseup="document.body.style.backgroundColor = 'blue'; alert('Background AZUL.')">
 	</p>
 	<p>Press any key to turn the page to tomato.</p>
+	<p>Click and hold for black, let go for purple.
+		<input type="button" value="Black or Purple" onmousedown="document.body.style.backgroundColor = 'black';"
+		onmouseup="document.body.style.backgroundColor = 'purple';">
+	</p>
 </form>
 <hr>
 
