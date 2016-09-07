@@ -6,6 +6,8 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	//ADD PROMPT HERE
+	var yourName = window.prompt("What's your name?", "");
+	console.log(yourName);
 </script>
 </head>
 <body>
@@ -15,6 +17,8 @@
 	<input type="button" value="George" onclick="alert('George');">
 	<input type="button" value="Ringo" onclick="alert('Ringo');">
 	<!--ADD BUTTON HERE-->
+	<input type="button" value="Click Me!" onclick="alert('Your name is: ' + yourName);">
+
 </form>
 </body>
 </html>

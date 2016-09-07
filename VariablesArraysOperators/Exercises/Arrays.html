@@ -6,17 +6,22 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	/*
-		Declare a rockStars array and populate it with 
+		Declare a rockStars array and populate it with
 		four values entered by the user.
 	*/
+	var rockStars = [];
+	rockStars[0] = window.prompt("Name a rockstar: ", "");
+	rockStars[1] = window.prompt("Name a rockstar: ", "");
+	rockStars[2] = window.prompt("Name a rockstar: ", "");
+	rockStars[3] = window.prompt("Name a rockstar: ", "");
 </script>
 </head>
 <body>
 <form>
-	<input type="button" value="Favorite">
-	<input type="button" value="Next Favorite">
-	<input type="button" value="Next Favorite">
-	<input type="button" value="Next Favorite">
+	<input type="button" value="Favorite" onclick="alert(rockStars[0])">
+	<input type="button" value="Next Favorite" onclick="alert(rockStars[1]);">
+	<input type="button" value="Next Favorite" onclick="alert(rockStars[2]);">
+	<input type="button" value="Next Favorite" onclick="alert(rockStars[3]);">
 </form>
 </body>
 </html>
