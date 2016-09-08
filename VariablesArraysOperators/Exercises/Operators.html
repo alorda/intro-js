@@ -7,15 +7,29 @@
 <script type="text/javascript">
 	var rockStars = [];
 	rockStars[0] = prompt("Who is your favorite rock star?", "");
-	/*
-	Ask the user how many of this rockstar's albums she owns and store
-	the result in a variable.
-	*/
 	rockStars[1] = prompt("And your next favorite rock star?", "");
 	/*
 	Ask the user how many of this rockstar's albums she owns and store
 	the result in a variable.
 	*/
+	var numFaveArtistAlbumCount =
+	parseInt(prompt("How many of " + rockStars[0] + "'s albums do you have?", ""));
+	/*
+	Ask the user how many of this rockstar's albums she owns and store
+	the result in a variable.
+	*/
+	var numNextFaveArtistAlbumCount =
+	parseInt(prompt("How many of " + rockStars[1] + "'s albums do you have?", ""));
+
+	/*Determine of which artist the fan has more albums*/
+	var theTrueFave = numFaveArtistAlbumCount > numNextFaveArtistAlbumCount ? rockStars[0] : rockStars[1];
+	var theSecondFave = numFaveArtistAlbumCount < numNextFaveArtistAlbumCount ? rockStars[0] : rockStars[1];
+
+	/*Determine the difference of albums conditionally*/
+	var howManyMore = numFaveArtistAlbumCount > numNextFaveArtistAlbumCount ?
+	numFaveArtistAlbumCount - numNextFaveArtistAlbumCount :
+	numNextFaveArtistAlbumCount - numFaveArtistAlbumCount;
+
 </script>
 </head>
 <body>
@@ -23,5 +37,11 @@
 	Let the user know how many more of her favorite rockstar's albums
 	she has than of her second favorite rockstar's albums.
 -->
+<p>
+	<script type="text/javascript">
+		document.write("You have " + howManyMore + " more of " + theTrueFave + "'s albums than " + theSecondFave +"'s albums.");
+	</script>
+</p>
+
 </body>
 </html>
