@@ -5,7 +5,11 @@
 <title>Colormania</title>
 <script type="text/javascript">
 	//PROMPT USER FOR NAME
-	
+	var userName = window.prompt("You must tell me your name", "");
+
+	function changeBg(color){
+		document.body.style.backgroundColor = color;
+	}
 	/*
 	Write a function called changeBg() that changes the background
 	color and then pops up an alert telling the user, by name, what
@@ -16,6 +20,18 @@
 <body>
 <form>
 	<!--ADD BUTTONS HERE-->
+	<span onclick="changeBg('red')";>
+		<input type="button" value="Red">
+	</span>
+	<span onclick="changeBg('blue')";>
+		<input type="button" value="Blue">
+	</span>
+	<span onclick="changeBg('green')";>
+		<input type="button" value="Green">
+	</span>
+	<span onclick="changeBg('yellow')";>
+		<input type="button" value="Yellow">
+	</span>
 </form>
 </body>
 </html>
