@@ -5,15 +5,15 @@
 <title>Passing Values</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	function changeBg(color){
+function setBgColor(){
+		var color= window.prompt("What color would you like the background to be?", "");
 		document.body.style.backgroundColor = color;
 	}
 </script>
 </head>
 <body>
 <p>
-	<span onclick="changeBg('red');">Red</span> |
-	<span onclick="changeBg('white');">White</span>
+	<span onclick="setBgColor();">Click me to set a different background color!</span>
 </p>
 </body>
 </html>
