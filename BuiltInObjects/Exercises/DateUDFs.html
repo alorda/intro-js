@@ -18,10 +18,10 @@
 		months[9] = "October";
 		months[10] = "November";
 		months[11] = "December";
-		
+
 		return months[num-1];
 	}
-	
+
 	function enterMonth(){
 		var userMonth = prompt("What month were you born?", "");
 		alert("You were born in " + monthAsString(userMonth) + ".");
@@ -31,12 +31,30 @@
 		var today = new Date();
 		alert(monthAsString(today.getMonth()+1));
 	}
+
+	function dayAsString(num) {
+		var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+		return days[num-1];
+	}
+
+	function enterDay() {
+		userDay = prompt("Enter the numerical value of the day of the week:", "");
+		alert("You're telling me it's " + dayAsString(userDay) + " ?");
+	}
+
+	function getCurrentDay() {
+		var today = new Date();
+		alert("Today is: " + dayAsString(today.getDay()) );
+	}
 </script>
 </head>
 <body>
 <form>
 	<input type="button" value="CHOOSE MONTH" onclick="enterMonth();">
 	<input type="button" value="GET CURRENT MONTH" onclick="getCurrentMonth();"><br>
+
+	<input type="button" value="CHOOSE DAY" onclick="enterDay();">
+	<input type="button" value="GET CURRENT DAY" onclick="getCurrentDay();">
 </form>
 </body>
 </html>
