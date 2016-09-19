@@ -18,7 +18,7 @@ For last name:
 	try again.
 	If the user enters a number for the last name, tell the user
 	that a last name can't be a number and prompt him/her to try again.
-	
+
 After collecting the gender and last name...
 	If the gender is valid, pop up an alert that
 	greets the user appropriately (e.g, "Hello Ms. Smith!")
@@ -26,6 +26,33 @@ After collecting the gender and last name...
 	that reads something like "XYZ is not a gender!"
 
 */
+
+	function greetUser() {
+
+		var gender = prompt("What is your gender?", "").toLowerCase();
+			if (gender != "male" && gender != "female") {
+				gender = prompt("Please type either 'male' or 'female':", "");
+			}
+
+		var lastName = prompt("What is your last name?", "");
+			if (lastName.length < 1) {
+				lastName = prompt("You can't leave it blank; please enter your last name.", "");
+			} else if (isNaN(lastName) == false) {
+				lastName = prompt("Your last name can't be a number; enter it with letters.", "");
+			}
+
+		switch (gender) {
+			case "male" :
+				alert("Hello Mr. " + lastName + " !");
+				break;
+			case "female" :
+				alert("Hello Ms. or Mrs. " + lastName + " !");
+				break;
+		  default :
+				alert(gender + " is not a gender!");
+		}
+
+	}
 </script>
 </head>
 <body onload="greetUser();">
