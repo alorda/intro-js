@@ -4,18 +4,42 @@
 <meta charset="UTF-8">
 <title>Loops</title>
 <script type="text/javascript">
+
 function greetUser(){
 	var greeting;
+	var gender;
+	var lastName;
 	var presidents = ["Johnson", "Lincoln", "Washington", "Obama"];
 
-	do {
-	var gender = prompt("Are you Male or Female?", "") || "";
-	}
-	while (gender.toLowerCase() != "male" && gender.toLowerCase() != "female");
-
+	var repeat = false;
 
 	do {
-	var lastName = prompt("What's your last name?", "") || "";
+		if (!repeat) {
+			gender = prompt("Are you Male or Female?", "") || "";
+			repeat = true;
+			// change to true means the first prompt will only execute the first time, because repeat = true after that.
+	} else {
+			gender = prompt("You must enter 'Male' or 'Female'. Try again:", "");
+		}
+	} while (typeof gender!= "string"
+		|| gender.toLowerCase() != "male"
+	  && gender.toLowerCase() != "female");
+
+	repeat = false;
+	// because you must re-set it.
+	do {
+		if (!repeat) {
+			lastName = prompt("What's your last name?", "") || "";
+			repeat = true;
+			// I didn't use a switch case because I think we need if/else if to use the repeat = true to false toggle
+		} else if (lastName.length === 0) {
+			lastName = prompt("You left it blank! Please try again:")
+		} else if (! isNaN(lastName)){
+			lastName = prompt("You can't have numbers in your last name! Try again:")
+		}
+			else if (lastName.substr(0, 1) === lastName.substr(0, 1).toLowerCase()) {
+			lastName = prompt("You didn't capitalize your last name! Try again:")
+		}
 	}
 	while (
 		lastName.length === 0
@@ -37,6 +61,8 @@ function greetUser(){
 	for (var prez in presidents) {
 		if (lastName.toLowerCase() == presidents[prez].toLowerCase() ) {
 			alert(greeting + " Are you the descendant of a President?");
+		} else {
+			alert(greeting + " your last name isn't very presidential. You LOSE.")
 		}
 	}
 }
