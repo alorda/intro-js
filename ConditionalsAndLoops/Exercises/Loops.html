@@ -5,31 +5,39 @@
 <title>Loops</title>
 <script type="text/javascript">
 function greetUser(){
-	var gender, lastName;
-	
-	gender = prompt("Are you Male or Female?", "") || "";
-	if (gender.toLowerCase() != "male" && gender.toLowerCase() != "female") {
-		gender = prompt("Try again: Male or Female?", "") || "";
+	var greeting;
+	var presidents = ["Johnson", "Lincoln", "Washington", "Obama"];
+
+	do {
+	var gender = prompt("Are you Male or Female?", "") || "";
 	}
-	
-	lastName = prompt("What's your last name?", "") || "";
-	if (lastName.length === 0) {
-		lastName = prompt("You must have a last name.  Please re-enter:", "") || "";
-	} else if (! isNaN(lastName)) {
-		lastName = prompt("Your last name can't be a number.  Please re-enter:", "") || "";
-	} else if (lastName.substr(0, 1) == lastName.substr(0, 1).toLowerCase()) {
-		lastName = prompt("Your last name can't start with a lowercase letter.  Please re-enter:", "") || "";
+	while (gender.toLowerCase() != "male" && gender.toLowerCase() != "female");
+
+
+	do {
+	var lastName = prompt("What's your last name?", "") || "";
 	}
-	
+	while (
+		lastName.length === 0
+		|| ! isNaN(lastName)
+		|| lastName.substr(0, 1) == lastName.substr(0, 1).toLowerCase()
+	);
+
 	switch (gender.toLowerCase()) {
 	case "male" :
-		alert("Hello Mr. " + lastName + "!");
+		greeting = "Hello Mr. " + lastName + "!";
 		break;
 	case "female" :
-		alert("Hello Ms. " + lastName + "!");
+		greeting = "Hello Ms. " + lastName + "!";
 		break;
 	default :
-		alert(gender + " is not a gender!");
+		greeting = "Hello stranger!";
+	}
+
+	for (var prez in presidents) {
+		if (lastName.toLowerCase() == presidents[prez].toLowerCase() ) {
+			alert(greeting + " Are you the descendant of a President?");
+		}
 	}
 }
 </script>
