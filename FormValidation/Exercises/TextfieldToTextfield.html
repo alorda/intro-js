@@ -11,6 +11,11 @@
 		function in DateUDFs.js and writes the result in
 		the MonthName field.
 	*/
+	function getMonth() {
+		var userMonth = document.dateForm.MonthNumber.value;
+
+		document.dateForm.MonthName.value = monthAsString(userMonth);
+	};
 </script>
 </head>
 <body>
