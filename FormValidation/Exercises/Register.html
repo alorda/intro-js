@@ -3,14 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <title>Registration Form</title>
+<script type="text/javascript" src="FormValidation.js"></script>
 <script type="text/javascript">
-/*
-	Create the validate() function here.
-*/
+
+function validate(form) {
+	console.log("inside validate function, page load?");
+
+	var firstName = form.FirstName.value;
+	var midInit = form.MidInit.value;
+	var lastName = form.LastName.value;
+	var city = form.City.value;
+	var state = form.State.value;
+	var country = form.Country.value;
+	var zip = form.Zip.value;
+	var email = form.Email.value;
+	var username = form.Username.value;
+	var pw1 = form.Password1.value;
+	var pw2 = form.Password2.value;
+	var errors = [];
+
+	if (!checkLength(firstName)) {
+		errors.push("You must enter a first name.");
+	}
+
+	if (!checkLength(midInit, 1, 1) && midInit.length > 0) {
+		errors.push("You can only enter an initial for middle name.");
+	}
+
+	if (!checkLength(lastName)) {
+		errors.push("You must enter a last name.");
+	}
+
+	if (!checkLength(city)) {
+		errors.push("You can't leave \"City\" blank.");
+	}
+
+	if (!checkLength(state, 2, 2)) {
+		errors.push("The State must be a two-letter abbreviation.");
+	}
+
+	if (!checkLength(country)) {
+		errors.push("You can't leave \"Country\" blank.");
+	}
+
+	if (!checkLength(zip, 5, 5)) {
+		errors.push("It's gotta be a 5-digit ZIP code.");
+	}
+
+	if (!checkEmail(email)) {
+		errors.push("Yo, I need a valid email.");
+	}
+
+	if (!checkLength(username)) {
+		errors.push("You can't leave \"Username\" blank.");
+	}
+
+	if (!checkLength(pw1)) {
+		errors.push("You can't leave \"Password\" blank.");
+	} else if (compareValues(pw1, pw2) !== 0) {
+		errors.push("Your passwords don't match!");
+	}
+
+	console.log("errors: ", errors);
+
+	if (errors.length > 0) {
+		reportErrors(errors);
+		return false;
+	}
+
+	return true;
+}
 
 function reportErrors(errors){
 	var msg = "There were some problems...\n";
 	var numError;
+	console.log(errors);
 	for (var i = 0; i<errors.length; i++) {
 		numError = i + 1;
 		msg += "\n" + numError + ". " + errors[i];
