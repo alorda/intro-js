@@ -19,13 +19,17 @@ function compareValues(val1, val2) {
 }
 
 function checkEmail(email) {
+
 	if (email.length < 6) {
 		return false;
 	} else if (!email.includes("@")) {
 		return false;
 	}	else if (!email.includes(".")) {
 		return false;
-	} else {
+	} else if ( email.lastIndexOf("@") > email.lastIndexOf(".") ){
+		return false;
+	}
+	else {
 		return true;
 	}
 }
