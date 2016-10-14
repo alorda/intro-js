@@ -108,7 +108,7 @@ function checkStateCountry(state, country) {
 		return true;
 	} else if ( state >= canMin && state <= canMax && country == "CA") {
 		return true;
-	} else if (country == "Other" ) {
+	} else if ( state == 0 && country == "Other" ) {
 		return true;
 	}
 }
