@@ -15,6 +15,7 @@ function validate(form){
 	var userName = form.Username.value;
 	var password1 = form.Password1.value;
 	var password2 = form.Password2.value;
+	var country = form.Country;
 	var errors = [];
 
 	if (!checkLength(firstName)) {
@@ -57,6 +58,10 @@ function validate(form){
 	2. checks that the country and state selection are in sync
 	3. checks that the terms have been accepted
 	*/
+
+	if ( !checkRadioArray(country) ) {
+		errors.push("You must select a country.");
+	}
 
 	if (errors.length > 0) {
 		reportErrors(errors);

@@ -39,7 +39,7 @@ function compareValues(val1, val2){
 	Arguments: email
 	Returns:
 		false if email has fewer than 6 characters
-		false if email does not contain @ symbol 
+		false if email does not contain @ symbol
 		false if email does not contain a period (.)
 		false if the last @ symbol comes after the last period (.)
 		true otherwise
