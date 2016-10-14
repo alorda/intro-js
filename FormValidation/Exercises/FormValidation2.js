@@ -67,6 +67,7 @@ function checkEmail(email){
 function checkRadioArray(radioButtons){
 	for (var i=0; i < radioButtons.length; i++) {
 		if (radioButtons[i].checked) {
+			console.log("Radio array: ", radioButtons);
 			return true;
 		}
 	}
@@ -92,7 +93,24 @@ function checkCheckBox(cb){
 		true otherwise
 */
 function checkSelect(select){
+	console.log("selectedIndex is: ", select.selectedIndex);
 	return (select.selectedIndex > 0);
+}
+
+/*Function to check that State/Province matches Country */
+function checkStateCountry(state, country) {
+	var usMin = 1;
+	var usMax = 51;
+	var canMin = 52;
+	var canMax = 61;
+
+	if (state >= usMin && state <= usMax && country == "USA") {
+		return true;
+	} else if ( state >= canMin && state <= canMax && country == "CA") {
+		return true;
+	} else if (country == "Other" ) {
+		return true;
+	}
 }
 
 /*

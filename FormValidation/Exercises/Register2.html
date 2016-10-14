@@ -11,7 +11,10 @@ function validate(form){
 	var lastName = form.LastName.value;
 	var city = form.City.value;
 	var countryArray = form.Country;
+	var selectedCountry = countryArray.value;
+	console.log("selectedCountry: ", selectedCountry);
 	var stateArray = form.State;
+	var selectedState = stateArray.selectedIndex;
 	var zipCode = form.Zip.value;
 	var email = form.Email.value;
 	var userName = form.Username.value;
@@ -44,6 +47,22 @@ function validate(form){
 		errors.push("You must select a State.");
 	}
 
+	if (checkSelect(stateArray)) {
+		if (!checkStateCountry(selectedState, selectedCountry)) {
+			errors.push("Your State/Province doesn't match your country.");
+		}
+		// var usMin = 1;
+		// var usMax = 51;
+		// var canMin = 52;
+		// var canMax = 61;
+		//
+		// if ( selectedState >= usMin && selectedState <= usMax && selectedCountry !== 0 ) {
+		// 	errors.push("Your State/Province doesn't match your country.");
+		// } else if ( selectedState >= canMin && selectedState <= canMax )	{
+		// 	errors.push("Your State/Province doesn't match your country.");
+		// }
+	}
+
 	if (!checkLength(zipCode, 5, 10)) {
 		errors[errors.length] = "You must enter a valid zip code.";
 	}
@@ -67,14 +86,8 @@ function validate(form){
 	}
 
 	/*
-	Write code that
-\	2. checks that the country and state selection are in sync
+	Write code that checks that the country and state selection are in sync
 	*/
-
-
-	// if (checkSelected(stateArray)) {
-	// 	errors.push("State selected.");
-	// }
 
 	if (errors.length > 0) {
 		reportErrors(errors);

@@ -6,20 +6,21 @@
 <script type="text/javascript">
 function validate(form){
 	var errors = [];
-	
+
 	if ( !checkRadioArray(form.container) ) {
 		errors[errors.length] = "You must choose a cup or cone.";
 	}
-	
+
 	if (errors.length > 0) {
 		reportErrors(errors);
 		return false;
 	}
-	
+
 	return true;
 }
 
 function checkRadioArray(radioButtons){
+	console.log("rB : ", radioButtons);
 	for (var i=0; i < radioButtons.length; i++) {
 		if (radioButtons[i].checked) {
 			return true;
@@ -41,7 +42,7 @@ function reportErrors(errors){
 </head>
 <body>
 <h1>Ice Cream Form</h1>
-<form method="post" action="Process.html" 
+<form method="post" 
 			onsubmit="return validate(this);">
 	<strong>Cup or Cone?</strong>
 	<input type="radio" name="container" value="cup"> Cup
