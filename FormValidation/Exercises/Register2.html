@@ -221,7 +221,7 @@ function reportErrors(errors){
       <tr valign="top">
         <td>Comments: </td>
         <td><textarea name="Comments" cols="30" rows="3"
-		wrap="virtual"></textarea></td>
+		wrap="virtual" onblur="checkTextArea(this, 100);"></textarea></td>
       </tr>
       <tr>
         <td colspan="2"><input type="checkbox" name="Terms" value="checkbox">
