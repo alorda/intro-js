@@ -12,12 +12,13 @@ imagePaths.push("Images/Banner.jpg");
 imagePaths.push("Images/Hulk.jpg");
 imagePaths.push("Images/Bruce.jpg");
 imagePaths.push("Images/Batman.jpg");
-imagePaths.push("")
 
 var imageCache = [];
 for (var i = 0; i < imagePaths.length; i++ ) {
+	var s = imagePaths[i]
 	imageCache[i] = new Image();
-	imageCache[i].src = imagePaths[i];
+	imageCache[i].src = s;
+	imageCache[i].name = s.substring(s.lastIndexOf("/")+1, s.lastIndexOf("."));
 }
 
 var curSlide = 0;
@@ -48,6 +49,12 @@ function changeSlide(dir) {
 		curSlide = 0;
 	}
 	document.Slide.src = imagePaths[curSlide];
+	document.forms[0].imageSelector.selectedIndex = curSlide;
+}
+
+function goToSlide(slide) {
+	document.Slide.src = imagePaths[slide];
+	curSlide = slide;
 }
 
 </script>
@@ -60,11 +67,12 @@ function changeSlide(dir) {
 <input type="button" onclick="changeSlide(-1);" value="Previous">
 <input type="button" onclick="changeSlide(1);" value="Next">
 <br>
-<select name="dudes" id="">
-	<option value="">Banner</option>
-	<option value="">Hulk</option>
-	<option value="">Bruce</option>
-	<option value="">Batman</option>
+<select name="imageSelector" onchange="goToSlide(this.selectedIndex);">
+	<script type="text/javascript">
+		for (var i = 0; i <imageCache.length; i++) {
+			document.write("<option value='" + i + "'>" + imageCache[i].name + "</option>");
+		}
+	</script>
 </select>
 </form>
 </div>
