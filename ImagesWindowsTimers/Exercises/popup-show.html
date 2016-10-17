@@ -33,10 +33,12 @@ function changeSlide(dir){
 var showTimer;
 function play() {
 	//write code to change slide every 1 second.
+	slideTimer = setInterval(function() {changeSlide(1); },1000);
 }
 
 function stop() {
 	//write code to stop slide show
+		clearTimeout(slideTimer)
 }
 </script>
 </head>
