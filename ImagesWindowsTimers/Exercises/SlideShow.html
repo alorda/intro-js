@@ -6,14 +6,26 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 
-//Preload Banner.jpg, Hulk.jpg, Bruce.jpg and Batman.jpg. 
+//Preload Banner.jpg, Hulk.jpg, Bruce.jpg and Batman.jpg.
+var imagePaths = [];
+imagePaths.push("Images/Banner.jpg");
+imagePaths.push("Images/Hulk.jpg");
+imagePaths.push("Images/Bruce.jpg");
+imagePaths.push("Images/Batman.jpg");
+imagePaths.push("")
+
+var imageCache = [];
+for (var i = 0; i < imagePaths.length; i++ ) {
+	imageCache[i] = new Image();
+	imageCache[i].src = imagePaths[i];
+}
 
 var curSlide = 0;
 /*
-	Create the function below. 
-		-If the user is viewing the last slide and clicks 
+	Create the function below.
+		-If the user is viewing the last slide and clicks
 		the Next button, the first slide should appear.
-		-If the user is viewing the first slide and clicks 
+		-If the user is viewing the first slide and clicks
 		the Previous button, the last slide should appear.
 */
 
@@ -23,9 +35,20 @@ var curSlide = 0;
 	Returns: nothing
 	Action: Moves to next or previous slide, depending
 			on value of dir.
-			
+
 			The slide number is stored in curSlide.
 */
+function changeSlide(dir) {
+	var min = 0;
+	var max = imagePaths.length;
+	curSlide += dir;
+	if (curSlide < 0) {
+		curSlide = imageCache.length -1;
+	} else if (curSlide >= imageCache.length) {
+		curSlide = 0;
+	}
+	document.Slide.src = imagePaths[curSlide];
+}
 
 </script>
 </head>
